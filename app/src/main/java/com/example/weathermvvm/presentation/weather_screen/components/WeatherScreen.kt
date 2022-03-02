@@ -8,7 +8,7 @@ import com.example.weathermvvm.presentation.weather_screen.WeatherViewModel
 
 @Composable
 fun WeatherScreen(
-    viewModel: WeatherViewModel
+    viewModel: WeatherViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
 
