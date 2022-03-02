@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Weather MVVM</string>
+    <string name="morning">morning\n%</string>
+
 </resources>

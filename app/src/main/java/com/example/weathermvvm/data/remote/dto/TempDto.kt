@@ -1,6 +1,7 @@
 package com.example.weathermvvm.data.remote.dto
 
 import com.example.weathermvvm.domain.model.Temp
+import com.example.weathermvvm.utilits.toCelsius
 
 data class TempDto(
     val day: Double,
@@ -13,9 +14,9 @@ data class TempDto(
 
 fun TempDto.toTemp(): Temp {
     return Temp(
-        day = day,
-        morn = morn,
-        eve = eve,
-        night = night
+        day = day.toCelsius(),
+        morn = morn.toCelsius(),
+        eve = eve.toCelsius(),
+        night = night.toCelsius()
     )
 }

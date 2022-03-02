@@ -4,11 +4,13 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.weathermvvm.domain.usecase.get_weather.GetWeatherUseCase
 import com.example.weathermvvm.utilits.Constants.PARAM_LAT
 import com.example.weathermvvm.utilits.Constants.PARAM_LON
 import com.example.weathermvvm.utilits.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
@@ -17,7 +19,7 @@ class WeatherViewModel @Inject constructor(
     private val getWeatherUseCase: GetWeatherUseCase
 ): ViewModel() {
 
-    private val _state = mutableStateOf<WeatherState>(WeatherState())
+    private val _state = mutableStateOf(WeatherState())
     val state: State<WeatherState> = _state
 
 
@@ -40,7 +42,7 @@ class WeatherViewModel @Inject constructor(
                 }
             }
 
-        }
+        }.launchIn(viewModelScope)
     }
 
 }

@@ -1,8 +1,8 @@
 package com.example.weathermvvm.domain.model
 
 data class Temp(
-    val day: Double,
-    val eve: Double,
-    val morn: Double,
-    val night: Double
+    val day: String,
+    val eve: String,
+    val morn: String,
+    val night: String
 )

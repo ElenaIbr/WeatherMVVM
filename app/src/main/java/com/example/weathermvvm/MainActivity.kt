@@ -8,16 +8,21 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.weathermvvm.presentation.ui.theme.WeatherMVVMTheme
-import com.example.weathermvvm.presentation.weather_screen.WeatherViewModel
 import com.example.weathermvvm.presentation.weather_screen.components.WeatherScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            WeatherScreen()
+            WeatherMVVMTheme (darkTheme = false) {
+                // A surface container using the 'background' color from the theme
+                Surface(color = MaterialTheme.colors.background) {
+                    WeatherScreen()
+                }
+            }
         }
     }
 }
