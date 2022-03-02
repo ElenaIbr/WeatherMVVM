@@ -1,7 +1,6 @@
 package com.example.weathermvvm.data.remote.dto
 
 import com.example.weathermvvm.domain.model.Daily
-import com.example.weathermvvm.domain.model.Temp
 import com.example.weathermvvm.utilits.getDate
 import com.google.gson.annotations.SerializedName
 

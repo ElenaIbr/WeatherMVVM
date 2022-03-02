@@ -1,28 +1,22 @@
 package com.example.weathermvvm.presentation.weather_screen.components
 
-import android.content.res.Resources
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.semantics.SemanticsProperties.Text
-import com.example.weathermvvm.domain.model.Daily
-import androidx.compose.material.Text
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.weathermvvm.R
-import com.example.weathermvvm.presentation.ui.theme.TransparentWhite
+import com.example.weathermvvm.domain.model.Daily
+import com.example.weathermvvm.presentation.ui.theme.BackgroundDay
 import com.example.weathermvvm.utilits.getImage
+import java.util.*
 
 @Composable
 fun OneDayItem(day: Daily) {
@@ -33,11 +27,15 @@ fun OneDayItem(day: Daily) {
         Modifier
             .fillMaxSize()
             .clip(RoundedCornerShape(20))
-            .background(TransparentWhite)
+            .background(BackgroundDay)
             .padding(start = 16.dp, end = 16.dp)
     ) {
-        Image(painter = painterResource(id = getImage(day.weather.first().id)),
-            contentDescription = null)
+        Image(painter = painterResource(
+            id = getImage(day.weather.first().id)
+        ),
+            contentDescription = null,
+            Modifier
+                .width(100.dp))
 
         Column(Modifier
             .fillMaxHeight()
@@ -45,10 +43,15 @@ fun OneDayItem(day: Daily) {
             verticalArrangement = Arrangement.Center
         ) {
             Text (
-                text = day.dt.toString(),
+                text = day.dt + ", " + day.temp.day,
+                fontWeight = FontWeight.Medium
             )
             Text (
-                text = day.temp.day.toString() + ", " + day.weather.first().description
+                text = day.weather.first().description.replaceFirstChar {
+                    if (it.isLowerCase()) it.titlecase(
+                        Locale.getDefault()
+                    ) else it.toString()
+                }
             )
         }
     }

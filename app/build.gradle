@@ -93,4 +93,5 @@ dependencies {
     kapt 'androidx.hilt:hilt-compiler:1.0.0'
     kapt "com.google.dagger:hilt-android-compiler:2.38.1"
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.17.0"
+    implementation "com.google.accompanist:accompanist-permissions:0.21.1-beta"
 }

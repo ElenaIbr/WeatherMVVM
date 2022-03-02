@@ -1,24 +1,21 @@
 package com.example.weathermvvm.presentation.weather_screen.components
 
-import android.util.Log
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.weathermvvm.presentation.ui.theme.BackgroundDay
+import com.example.weathermvvm.presentation.ui.theme.TransparentBlue
 import com.example.weathermvvm.presentation.weather_screen.WeatherViewModel
-import com.example.weathermvvm.utilits.getImage
-import androidx.compose.ui.res.stringResource
 
 @Preview
 @Composable
@@ -28,38 +25,37 @@ fun WeatherScreen(
     val state = viewModel.state.value
 
     state.weather.let { weather ->
-
         val today = weather?.daily?.first()
 
         Column (
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 16.dp)
+                .background(TransparentBlue)
         ) {
             Text(
                 text = weather?.timezone.toString(),
                 Modifier
                     .fillMaxWidth()
-                    .padding(top = 16.dp),
-                textAlign = TextAlign.Center
+                    .padding(top = 8.dp, start = 4.dp),
+                textAlign = TextAlign.Start,
+                fontSize = 12.sp
             )
-
-
             Text(
                 text = today?.dt.toString(),
                 Modifier
                     .fillMaxWidth()
-                    .padding(top = 16.dp),
-                textAlign = TextAlign.Center
+                    .padding(top = 24.dp),
+                textAlign = TextAlign.Center,
+                fontSize = 28.sp,
             )
-
             today?.temp?.let {
                 Text(
                     text = it.day,
                     Modifier
                         .fillMaxWidth(),
                     textAlign = TextAlign.Center,
-                    fontSize = 46.sp
+                    fontSize = 46.sp,
+                    fontWeight = FontWeight.Bold
                 )
             }
             today?.temp.let { temperature ->
@@ -83,12 +79,23 @@ fun WeatherScreen(
                 }
 
             }
-
             weather?.daily?.let { ListWithHeader(it) }
-
-
         }
 
+    }
+
+    if(state.error.isNotBlank()) {
+        Text(
+            text = state.error,
+            color = MaterialTheme.colors.error,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp)
+        )
+    }
+    if(state.isLoafing) {
+        CircularProgressIndicator(color = BackgroundDay)
     }
 
 }

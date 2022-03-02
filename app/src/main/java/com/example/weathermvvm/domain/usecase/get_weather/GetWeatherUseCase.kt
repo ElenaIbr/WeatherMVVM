@@ -1,6 +1,5 @@
 package com.example.weathermvvm.domain.usecase.get_weather
 
-import com.example.weathermvvm.data.remote.dto.PeriodDto
 import com.example.weathermvvm.data.remote.dto.toPeriod
 import com.example.weathermvvm.domain.model.Period
 import com.example.weathermvvm.domain.repository.WeatherRepository

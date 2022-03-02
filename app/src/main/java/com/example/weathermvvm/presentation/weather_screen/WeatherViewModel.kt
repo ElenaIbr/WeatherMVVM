@@ -2,12 +2,9 @@ package com.example.weathermvvm.presentation.weather_screen
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weathermvvm.domain.usecase.get_weather.GetWeatherUseCase
-import com.example.weathermvvm.utilits.Constants.PARAM_LAT
-import com.example.weathermvvm.utilits.Constants.PARAM_LON
 import com.example.weathermvvm.utilits.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
