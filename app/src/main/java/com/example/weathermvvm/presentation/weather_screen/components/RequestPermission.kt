@@ -55,7 +55,7 @@ fun RequestPermission() {
                 Manifest.permission.ACCESS_COARSE_LOCATION -> {
                     when {
                         perm.hasPermission -> {
-                            WeatherScreen()
+                            //WeatherScreen()
                         }
                         perm.shouldShowRationale -> {
                             Text(text = "Location permission is needed", color = BackgroundNight)

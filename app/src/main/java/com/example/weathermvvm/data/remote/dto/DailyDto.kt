@@ -2,6 +2,7 @@ package com.example.weathermvvm.data.remote.dto
 
 import com.example.weathermvvm.domain.model.Daily
 import com.example.weathermvvm.utilits.getDate
+import com.example.weathermvvm.utilits.getTime
 import com.google.gson.annotations.SerializedName
 
 data class DailyDto(
@@ -46,9 +47,12 @@ data class DailyDto(
 fun DailyDto.toDaily(): Daily {
     return Daily(
         dt = dt.getDate(),
-        moonrise = moonrise.getDate(),
-        moonset = moonset.getDate(),
+        sunrise = sunrise.getTime(),
+        sunset = sunset.getTime(),
         temp = tempDto.toTemp(),
-        weather = weatherDto.map{ it.toWeather() }
+        weather = weatherDto.map{ it.toWeather() },
+        pressure = pressure,
+        clouds = clouds,
+        windSpeed = windSpeed
     )
 }

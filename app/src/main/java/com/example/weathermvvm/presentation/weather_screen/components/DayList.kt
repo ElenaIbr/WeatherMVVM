@@ -9,10 +9,10 @@ import com.example.weathermvvm.domain.model.Daily
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ListWithHeader(items: List<Daily>) {
-    items.first().dt = "Today"
+    /*items.first().dt = "Today"
     LazyColumn {
         items(items) { item ->
             OneDayItem(item)
         }
-    }
+    }*/
 }

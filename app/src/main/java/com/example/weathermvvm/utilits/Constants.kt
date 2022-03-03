@@ -1,6 +1,7 @@
 package com.example.weathermvvm.utilits
 
 import com.example.weathermvvm.R
+import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -17,6 +18,12 @@ fun Double.toCelsius(): String {
 
 fun Int.getDate(): String {
     val sdf = SimpleDateFormat("EEEE, MMMM d", Locale.ENGLISH)
+    val date = Date(this.toLong() * 1000)
+    return sdf.format(date)
+}
+
+fun Int.getTime(): String {
+    val sdf = SimpleDateFormat("HH:mm", Locale.ENGLISH)
     val date = Date(this.toLong() * 1000)
     return sdf.format(date)
 }
@@ -43,4 +50,12 @@ fun getImage(id: Int): Int {
     }
 
     return image
+}
+
+fun <A> String.fromJson(type: Class<A>): A {
+    return Gson().fromJson(this, type)
+}
+
+fun <A> A.toJson(): String? {
+    return Gson().toJson(this)
 }

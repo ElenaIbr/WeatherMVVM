@@ -2,6 +2,7 @@ package com.example.weathermvvm.presentation.weather_screen.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
@@ -19,7 +20,9 @@ import com.example.weathermvvm.utilits.getImage
 import java.util.*
 
 @Composable
-fun OneDayItem(day: Daily) {
+fun OneDayItem(day: Daily,
+               onItemClick: (Daily) -> Unit
+) {
 
     Divider(color = Color.Transparent, thickness = 3.dp)
 
@@ -29,13 +32,15 @@ fun OneDayItem(day: Daily) {
             .clip(RoundedCornerShape(20))
             .background(BackgroundDay)
             .padding(start = 16.dp, end = 16.dp)
+            .clickable { onItemClick(day) }
     ) {
         Image(painter = painterResource(
             id = getImage(day.weather.first().id)
         ),
             contentDescription = null,
             Modifier
-                .width(100.dp))
+                .width(100.dp)
+        )
 
         Column(Modifier
             .fillMaxHeight()
