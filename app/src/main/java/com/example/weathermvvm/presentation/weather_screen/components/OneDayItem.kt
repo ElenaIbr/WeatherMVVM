@@ -12,26 +12,32 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.weathermvvm.R
 import com.example.weathermvvm.domain.model.Daily
 import com.example.weathermvvm.presentation.ui.theme.BackgroundDay
 import com.example.weathermvvm.utilits.getImage
 import java.util.*
 
 @Composable
-fun OneDayItem(day: Daily,
-               onItemClick: (Daily) -> Unit
+fun OneDayItem(
+    day: Daily,
+    onItemClick: (Daily) -> Unit
 ) {
-
     Divider(color = Color.Transparent, thickness = 3.dp)
-
     Row (
         Modifier
             .fillMaxSize()
-            .clip(RoundedCornerShape(20))
+            .clip(
+                RoundedCornerShape(20)
+            )
             .background(BackgroundDay)
-            .padding(start = 16.dp, end = 16.dp)
+            .padding(
+                start = 16.dp,
+                end = 16.dp
+            )
             .clickable { onItemClick(day) }
     ) {
         Image(painter = painterResource(
@@ -48,17 +54,15 @@ fun OneDayItem(day: Daily,
             verticalArrangement = Arrangement.Center
         ) {
             Text (
-                text = day.dt + ", " + day.temp.day,
+                text = day.dt + stringResource(id = R.string.comma) + day.temp.day,
                 fontWeight = FontWeight.Medium
             )
             Text (
                 text = day.weather.first().description.replaceFirstChar {
-                    if (it.isLowerCase()) it.titlecase(
-                        Locale.getDefault()
-                    ) else it.toString()
+                    if (it.isLowerCase()) it.titlecase(Locale.getDefault())
+                    else it.toString()
                 }
             )
         }
     }
-
 }

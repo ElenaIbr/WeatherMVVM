@@ -1,5 +1,20 @@
 <resources>
     <string name="app_name">Weather MVVM</string>
-    <string name="morning">morning\n%</string>
+
+    <string name="sunrise">Sunrise\n</string>
+    <string name="sunset">Sunset\n</string>
+
+    <string name="morning">Morning\n</string>
+    <string name="day">Day\n</string>
+    <string name="night">Night\n</string>
+    <string name="evening">Evening\n</string>
+    <string name="pressure">Pressure</string>
+    <string name="wind_speed">Wind Speed</string>
+    <string name="clouds">Clouds</string>
+    <string name="colon">: </string>
+    <string name="comma">, </string>
+    <string name="permission_is_needed">Location permission is needed</string>
+    <string name="permission_is_needed_settings">Location permission is needed. Enable it in the settings</string>
+    <string name="today">Today</string>
 
 </resources>

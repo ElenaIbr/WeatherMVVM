@@ -13,13 +13,14 @@ import com.example.weathermvvm.presentation.Screen
 import com.example.weathermvvm.presentation.ui.theme.WeatherMVVMTheme
 import com.example.weathermvvm.presentation.weather_screen.components.DayDetailScreen
 import com.example.weathermvvm.presentation.weather_screen.components.RequestPermission
-import com.example.weathermvvm.presentation.weather_screen.components.WeatherScreen
 import com.example.weathermvvm.utilits.fromJson
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+
     @ExperimentalPermissionsApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     composable(
                         route = Screen.WeatherScreen.route
                     ) {
-                        WeatherScreen(navController = navController)
+                        RequestPermission(navController = navController)
                     }
                     composable(
                         route = Screen.DayDetailScreen.route + "/{item}",
@@ -47,8 +48,9 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 }
-                //RequestPermission()
             }
         }
     }
+
+
 }

@@ -21,7 +21,7 @@ data class DailyDto(
     @SerializedName("temp")
     val tempDto : TempDto,
     @SerializedName("feels_like")
-    val feelsLike : FeelsLikeDto,
+    val feelsLike : FeelsLikeFull,
     @SerializedName("pressure")
     val pressure : Int,
     @SerializedName("humidity")
@@ -39,7 +39,7 @@ data class DailyDto(
     @SerializedName("clouds")
     val clouds : Int,
     @SerializedName("pop")
-    val pop : Int,
+    val pop : Double,
     @SerializedName("uvi")
     val uvi : Double
 )

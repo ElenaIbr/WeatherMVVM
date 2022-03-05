@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weathermvvm.domain.usecase.get_weather.GetWeatherUseCase
+import com.example.weathermvvm.presentation.weather_screen.components.WeatherState
 import com.example.weathermvvm.utilits.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn

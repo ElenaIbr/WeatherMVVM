@@ -10,15 +10,19 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import androidx.navigation.NavController
+import com.example.weathermvvm.R
 import com.example.weathermvvm.presentation.ui.theme.BackgroundNight
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 
 @ExperimentalPermissionsApi
 @Composable
-fun RequestPermission() {
+fun RequestPermission(navController: NavController) {
+
     val permissionsState = rememberMultiplePermissionsState(
         permissions = listOf(
             Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -55,20 +59,25 @@ fun RequestPermission() {
                 Manifest.permission.ACCESS_COARSE_LOCATION -> {
                     when {
                         perm.hasPermission -> {
-                            //WeatherScreen()
+                            WeatherScreen(
+                                navController = navController
+                            )
                         }
                         perm.shouldShowRationale -> {
-                            Text(text = "Location permission is needed", color = BackgroundNight)
+                            Text(
+                                text = stringResource(id = R.string.permission_is_needed),
+                                color = BackgroundNight
+                            )
                         }
                         perm.isPermanentlyDenied() -> {
-                            Text(text = "Location permission is needed." +
-                                    " You can enable it in the app" +
-                                    "settings.", color = BackgroundNight)
+                            Text(
+                                text = stringResource(id = R.string.permission_is_needed),
+                                color = BackgroundNight
+                            )
                         }
                     }
                 }
             }
-
         }
     }
 }
