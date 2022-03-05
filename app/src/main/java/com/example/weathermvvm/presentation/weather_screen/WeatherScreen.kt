@@ -9,9 +9,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -36,10 +36,12 @@ fun WeatherScreen(
         state.weather.let { weather ->
             if (weather != null) {
                 Text(
-                    text = weather.timezone.toString() ?: "",
+                    text = weather.timezone.toString(),
                     Modifier
                         .fillMaxWidth()
-                        .padding(start = 4.dp)
+                        .padding(
+                            start = dimensionResource(id = R.dimen.timezone_padding)
+                        )
                         .background(TransparentBlue),
                     textAlign = TextAlign.Start,
                     fontSize = 12.sp,
@@ -72,7 +74,7 @@ fun WeatherScreen(
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 20.dp)
+                    .padding(horizontal = dimensionResource(id = R.dimen.error_padding))
             )
         }
     }

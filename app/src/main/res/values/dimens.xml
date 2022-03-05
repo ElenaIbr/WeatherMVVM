@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="timezone_padding">4.dp</dimen>
+    <dimen name="timezone_font_size">12.sp</dimen>
+    <dimen name="error_padding">20.dp</dimen>
+    <dimen name="day_detail_padding">16.dp</dimen>
+    <dimen name="day_detail_height">40.dp</dimen>
+    <dimen name="day_detail_item_padding">40.dp</dimen>
+    <dimen name="scaffold_height">60.dp</dimen>
+    <dimen name="scaffold_padding">8.dp</dimen>
+    <dimen name="scaffold_text_padding">20.dp</dimen>
+
+
+
+</resources>

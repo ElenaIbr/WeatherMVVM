@@ -11,11 +11,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.weathermvvm.R
@@ -31,8 +31,8 @@ fun DayDetailScreen(
             topBar = {
                 Row (
                     Modifier
-                        .height(60.dp)
-                        .padding(8.dp)
+                        .height(dimensionResource(id = R.dimen.scaffold_height))
+                        .padding(dimensionResource(id = R.dimen.scaffold_padding))
                 ) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
@@ -44,7 +44,7 @@ fun DayDetailScreen(
                         text = day.dt,
                         Modifier
                             .fillMaxWidth()
-                            .padding(start = 4.dp),
+                            .padding(start = dimensionResource(id = R.dimen.scaffold_text_padding)),
                         textAlign = TextAlign.Center,
                         fontSize = 18.sp,
                     )
@@ -86,7 +86,7 @@ fun DayDetailItem(
     Row (
         Modifier
             .fillMaxWidth()
-            .padding(top = 16.dp),
+            .padding(top = dimensionResource(id = R.dimen.day_detail_item_padding)),
         Arrangement.Start
     ) {
         Image(painter = painterResource(
@@ -94,15 +94,19 @@ fun DayDetailItem(
         ),
             contentDescription = null,
             Modifier
-                .height(40.dp)
-                .padding(start = 20.dp)
+                .height(
+                    dimensionResource(id = R.dimen.day_detail_height)
+                )
+                .padding(start = dimensionResource(id = R.dimen.day_detail_item_padding))
         )
 
         Text (
             text = title + stringResource(id = R.string.colon) + value,
             Modifier
-                .height(40.dp)
-                .padding(start = 20.dp),
+                .height(
+                    dimensionResource(id = R.dimen.day_detail_height)
+                )
+                .padding(start = dimensionResource(id = R.dimen.day_detail_item_padding)),
             fontWeight = FontWeight.Medium
         )
     }
