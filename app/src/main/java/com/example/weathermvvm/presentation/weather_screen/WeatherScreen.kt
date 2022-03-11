@@ -1,5 +1,10 @@
 package com.example.weathermvvm.presentation.weather_screen.components
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.location.Location
+import android.os.Looper
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -9,6 +14,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -21,6 +27,9 @@ import com.example.weathermvvm.presentation.ui.theme.BackgroundNight
 import com.example.weathermvvm.presentation.ui.theme.TransparentBlue
 import com.example.weathermvvm.presentation.weather_screen.WeatherViewModel
 import com.example.weathermvvm.utilits.toJson
+import com.google.android.gms.location.*
+
+
 
 @Composable
 fun WeatherScreen(
@@ -28,6 +37,7 @@ fun WeatherScreen(
     navController: NavController
 ) {
     val state = viewModel.state.value
+
 
     Column(Modifier
         .fillMaxSize()
@@ -86,4 +96,6 @@ fun WeatherScreen(
             CircularProgressIndicator(color = BackgroundNight)
         }
     }
+
 }
+

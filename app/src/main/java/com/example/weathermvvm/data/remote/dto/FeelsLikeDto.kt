@@ -1,6 +1,6 @@
 package com.example.weathermvvm.data.remote.dto
 
-data class FeelsLikeFull(
+data class FeelsLikeDto(
     val day: Double,
     val eve: Double,
     val morn: Double,

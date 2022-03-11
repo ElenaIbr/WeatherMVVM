@@ -8,9 +8,7 @@ import javax.inject.Inject
 class WeatherRepositoryImpl @Inject constructor(
     private val api: OpenWeatherMapApi
 ): WeatherRepository {
-
     override suspend fun getWeather(lat: String, lon: String): PeriodDto {
         return api.getWeather(lat, lon)
     }
-
 }

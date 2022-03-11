@@ -20,14 +20,12 @@ class WeatherViewModel @Inject constructor(
     private val _state = mutableStateOf(WeatherState())
     val state: State<WeatherState> = _state
 
-
     init {
-        getWeather("52.0376977", "4.312")
+        getWeather()
     }
 
-
-    private fun getWeather(lat: String, lon: String) {
-        getWeatherUseCase(lat, lon).onEach { result ->
+    private fun getWeather() {
+        getWeatherUseCase("52.0376977", "4.312").onEach { result ->
             when(result) {
                 is Resource.Success -> {
                     _state.value = WeatherState(weather = result.data)
@@ -42,5 +40,4 @@ class WeatherViewModel @Inject constructor(
 
         }.launchIn(viewModelScope)
     }
-
 }
